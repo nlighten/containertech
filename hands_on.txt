@@ -1,0 +1,18 @@
+
+
+dotnet run --project aspnetapp
+
+
+docker build -t aspnetapp .
+
+
+docker run --rm -it -p 80:80 aspnetapp
+
+docker run --rm -it -p 80:80 --memory 256m --cpus 0.5 aspnetapp
+
+
+az containerapp up -n aspnetapp -g containerapp -l westeurope --source .
+az containerapp up -n aspnetapp -g containerapp --l westeurope --repo https://github.com/nlighten/containerapp
+
+
+az containerapp logs show -n aspnetapp -g containerapp --follow
